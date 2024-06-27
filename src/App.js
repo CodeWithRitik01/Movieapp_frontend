@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './app.css'
+import styles from './app.module.css'
 import { Navbar } from './components/Navbar/Navbar';
 import { Home } from './components/Home/Home';
 import { AddForm } from './components/AddForm/AddForm';
