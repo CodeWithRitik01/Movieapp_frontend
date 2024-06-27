@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import styles from './movieCard.module.css';
-import { server } from '../../../constants/config';
+import { server } from '../../constants/config';
 function MovieCard({movie}) {
 
   const handleClick =async(currentMovie) =>{

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { server } from "../../../constants/config";
+import { server } from "../../constants/config";
 
 const INITIALSTATE = {
    watchlist:[],
