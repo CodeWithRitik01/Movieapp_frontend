@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { server } from "../../../constants/config";
 
 const INITIALSTATE = {
    watchlist:[],
@@ -16,7 +17,7 @@ const INITIALSTATE = {
 //asyncThunk for getting all watchlist on every rendering
 export const getInitialStateAsync = createAsyncThunk("api/movie",
     () => {
-        const data = axios.get("http://localhost:4000/api/v1/watchlist/get")
+        const data = axios.get(`${server}/api/v1/watchlist/get`)
         return data;
     }
 )
@@ -24,7 +25,7 @@ export const getInitialStateAsync = createAsyncThunk("api/movie",
 //asyncThunk for editing details of movie
 export const editDetailAsync = createAsyncThunk("api/editmovie",async (payload) =>{
    const {title, description, year, genre, imageUrl, ID} = payload;
-   const response = await fetch(`http://localhost:4000/api/v1/watchlist/edit/${ID}`, {
+   const response = await fetch(`${server}/api/v1/watchlist/edit/${ID}`, {
        method:'PUT',
        body:JSON.stringify({
         title, 
@@ -45,7 +46,7 @@ export const editDetailAsync = createAsyncThunk("api/editmovie",async (payload) 
 //asyncthunk to rate the movie
 export const rateMovieAsync = createAsyncThunk("api/rateMovie",async (payload) =>{
     const {id, rating} = payload;
-    const response = await fetch(`http://localhost:4000/api/v1/watchlist/rate/${id}`, {
+    const response = await fetch(`${server}/api/v1/watchlist/rate/${id}`, {
         method:'PUT',
         body:JSON.stringify({
            rating
@@ -61,7 +62,7 @@ export const rateMovieAsync = createAsyncThunk("api/rateMovie",async (payload) =
 
 //async thunk to delete the movie from watchlist
 export const deleteMovieAsync = createAsyncThunk("movie/delete", async(payload) => {
-     const response = await fetch(`http://localhost:4000/api/v1/watchlist/${payload}`,{
+     const response = await fetch(`${server}/api/v1/watchlist/${payload}`,{
         method:"DELETE",
      })
      return payload;

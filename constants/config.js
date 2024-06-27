@@ -1,0 +1,1 @@
+export const server = import.meta.env.V_SERVER;

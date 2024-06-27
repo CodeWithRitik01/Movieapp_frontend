@@ -1,6 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import styles from './movieCard.module.css';
+import { server } from '../../../constants/config';
 function MovieCard({movie}) {
 
   const handleClick =async(currentMovie) =>{
@@ -27,7 +28,7 @@ function MovieCard({movie}) {
 
       try{
         const {data} = await axios.post(
-            `http://localhost:4000/api/v1/watchlist/addmovie`,
+            `${server}/api/v1/watchlist/addmovie`,
             formData,
             config
         )

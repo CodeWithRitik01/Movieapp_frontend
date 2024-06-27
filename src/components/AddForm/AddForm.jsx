@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import styles from "./addForm.module.css";
+import { server } from "../../../constants/config";
 
 function AddForm(){
 
@@ -40,7 +41,7 @@ function AddForm(){
 
           try{
             const {data} = await axios.post(
-                `http://localhost:4000/api/v1/watchlist/addmovie`,
+                `${server}/api/v1/watchlist/addmovie`,
                 formData,
                 config
             )

@@ -16,7 +16,6 @@ function WatchList() {
     dispatch(getInitialStateAsync());
   },[])
 
-  console.log(watchlist)
   const handleClick=(id) =>{
     const userConfirmed = window.confirm("Are you sure you want to delete this move from watchlist?");
     if(userConfirmed){
