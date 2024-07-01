@@ -12,6 +12,7 @@ const INITIALSTATE = {
    genre:"",
    imageUrl:"",
    ID:"",
+   watch:""
 }
 
 //asyncThunk for getting all watchlist on every rendering
@@ -59,6 +60,15 @@ export const rateMovieAsync = createAsyncThunk("api/rateMovie",async (payload) =
  }
  )
 
+ export const setWatchedAsync = createAsyncThunk("api/setwatched",async (payload) =>{
+   const {id} = payload;
+    const response = await fetch(`${server}/api/v1/watchlist/toggle/${id}`, {
+        method:'PUT',
+    })
+    return payload;
+ }
+ )
+
 
 //async thunk to delete the movie from watchlist
 export const deleteMovieAsync = createAsyncThunk("movie/delete", async(payload) => {
@@ -96,6 +106,7 @@ const watchlistSlice = createSlice({
         setId:(state, action) =>{
             state.ID = action.payload;
         },
+
     },
 
     extraReducers:(builder)=>{
@@ -130,6 +141,19 @@ const watchlistSlice = createSlice({
                   ...movie,
                   rating
                 }: movie
+            ))
+        })
+
+        builder.addCase(setWatchedAsync.fulfilled, (state, action) => {
+            const {id} = action.payload;
+            state.watchlist = state.watchlist.map((movie) =>(
+                movie._id === id ?
+                {
+                    ...movie,
+                    watched: !movie.watched  // Toggle the watched property
+                  }
+                :
+                movie
             ))
         })
     }

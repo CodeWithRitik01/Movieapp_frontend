@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { actions, deleteMovieAsync, getInitialStateAsync, rateMovieAsync, watchlistSelector } from '../../redux/reducers/watchlistReducer';
+import { actions, deleteMovieAsync, getInitialStateAsync, rateMovieAsync, setWatchedAsync, watchlistSelector } from '../../redux/reducers/watchlistReducer';
 import styles from "./watchlist.module.css";
 function WatchList() {
   const {watchlist} = useSelector(watchlistSelector);
@@ -47,6 +47,11 @@ function WatchList() {
     setId("");
     setRating("");
   }
+
+
+  const handleWatch = (id) => {
+     dispatch(setWatchedAsync({id}));
+  }
   return (
       <div className={styles.main}>
         {watchlist.length === 0 ?
@@ -77,6 +82,18 @@ function WatchList() {
                             <h1>{movie.title}</h1>
                             <p>{movie.description}</p>
                           </div>
+                          {
+                            movie.watched ?
+                            <div onClick={() =>handleWatch(movie._id)} className={styles.watchToggle}>
+                               <span>Watched</span>
+                            </div>
+                            :
+                            <div onClick={() =>handleWatch(movie._id)} className={styles.watchToggle}>
+                               <span>Not Watched</span>
+                            </div>
+
+                          }
+
                           <img alt='Not Found' className={styles.editButton} onClick={()=>handleEdit(movie)} src="https://cdn-icons-png.flaticon.com/128/10336/10336582.png"/>
 
                         </div>

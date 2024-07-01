@@ -56,9 +56,10 @@ p{
 .editButton{
     height: 40px;
     width: 40px;
-    position: relative;
-    right: 0px;
-    margin: 10px 10px 0px 0px;
+    /* position: relative;
+    right: 0px; */
+    /* margin: 10px 10px 0px 0px; */
+    margin-left: 50px;
 }
 
 .editButton:hover{
@@ -73,6 +74,10 @@ p{
     height: 30px;
     width: 30px;
     margin-top: -5px;
+}
+
+.titleDesc{
+    width: 60%;
 }
 
 .saveButton:hover{
@@ -104,6 +109,29 @@ p{
     margin-left: 40%;
 
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+    background-color: gray;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:3px solid rgb(53, 164, 224);
+
+  }
+
+  .switch:hover{
+    cursor: pointer;
+  }
+
+  .switch span{
+    color:rgb(2, 51, 78);
+  }
+
 
 @media only screen and (max-width: 1000px) {
     .Card {
