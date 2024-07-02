@@ -2,6 +2,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import styles from './movieCard.module.css';
 import { server } from '../../constants/config';
+
 function MovieCard({movie}) {
 
   const handleClick =async(currentMovie) =>{
@@ -32,12 +33,12 @@ function MovieCard({movie}) {
             formData,
             config
         )
-
+        console.log(data)
         toast.success(data.message, {
             id: toastId,
+        
           });
       }catch (error) {
-        console.log(error)
         toast.error(error?.response?.data?.message || "Something went wrong", {
           id: toastId,
         });

@@ -5,6 +5,7 @@ import { Home } from './components/Home/Home';
 import { AddForm } from './components/AddForm/AddForm';
 import { WatchList } from './components/WatchList/WatchList';
 import { EditForm } from './components/EditForm/Editform';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const router = createBrowserRouter([
@@ -21,7 +22,11 @@ function App() {
   ]);
 
   return (
+    <div>
     <RouterProvider router={router} />
+    <Toaster position='bottom-center'/> 
+    </div>
+ 
   );
 }
 
